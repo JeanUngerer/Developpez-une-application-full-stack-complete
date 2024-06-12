@@ -1,0 +1,22 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push" [autoFocus]="false" position="end">
+    <mat-nav-list>
+      <div>
+        <a mat-list-item routerLink="/articles">{{ "header.articles" | transloco }}</a>
+        <a mat-list-item routerLink="/themes">{{ "header.themes" | transloco }}</a>
+      </div>
+      <div>
+        <a *ngIf="!router.isActive('/profile', true)" routerLink="/profile" title="profile">
+          <img src="/assets/images/icons/account_circle.svg" alt="profile" class="profile-button">
+        </a>
+        <a *ngIf="router.isActive('/profile', true)" routerLink="/profile" title="profile">
+          <img src="/assets/images/icons/account_circle_active.svg" alt="profile" class="profile-button">
+        </a>
+        <app-language-switcher/>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

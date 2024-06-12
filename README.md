@@ -1,8 +1,9 @@
 # P6-Full-Stack-reseau-dev
 
+
 ## Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
 Don't forget to install your node_modules before starting (`npm install`).
 
@@ -14,12 +15,44 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-### Where to start
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+## Back
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+Make sure you have a local instance of mysql80 running on port 3306
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get ride of it.
+Setup your database username and password in the application.yml file with your MySql username and password strings.
 
-Good luck!
+For testing purposes, the database is emptied every time you run the app you dont have to run any sql script to build all tables, all is done by hibernate
+
+    hibernate:
+      ddl-auto: create-drop
+
+One testing user is created on app startup with credentials :
+Email:
+
+    testEmail@test.com
+
+Password:
+
+    123
+
+Setup your database username and password in the following environment variables
+
+    MDD_DB_USER
+    MDD_DB_PASS
+
+Go to backend folder
+
+> cd back
+
+Build project
+> mvn package
+
+Run project
+> mvn spring-boot:run
+
+
+Project runs at
+```localhost:9000```
+
+Swagger ui available at ```http://localhost:9000/api/swagger-ui/index.html```

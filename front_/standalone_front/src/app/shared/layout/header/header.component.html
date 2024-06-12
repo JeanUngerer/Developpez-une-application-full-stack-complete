@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <a routerLink="/home" title="articles">
+    <img *ngIf="!router.isActive('/welcome', true)" src="/assets/images/logos/logo.png" alt="logo" style="max-width:120px; height:auto;">
+  </a>
+
+  <div class="control-group">
+    <div class="link-group" *ngIf="!(router.isActive('/welcome', true) || router.isActive('/login', true) || router.isActive('/register', true))">
+
+      <a mat-button class="header-link" [routerLinkActive]="['active']" routerLink="/articles">{{ "header.articles" | transloco }}</a>
+
+      <a mat-button class="header-link" [routerLinkActive]="['active']" routerLink="/themes">{{ "header.themes" | transloco }}</a>
+
+
+      <a *ngIf="!router.isActive('/profile', true)" routerLink="/profile" title="profile">
+        <img src="/assets/images/icons/account_circle.svg" alt="profile" class="profile-button">
+      </a>
+      <a *ngIf="router.isActive('/profile', true)" routerLink="/profile" title="profile">
+        <img src="/assets/images/icons/account_circle_active.svg" alt="profile" class="profile-button">
+      </a>
+    </div>
+
+    <div class="control-group">
+      <app-language-switcher />
+    </div>
+  </div>
+
+  <div class="mobile-group">
+    <button class="header-menu-btn" mat-mini-fab color="white" (click)="toggleSidenav()">
+      <mat-icon aria-hidden="false" fontIcon="home" />
+      <img class="img-fluid" src="/assets/images/icons/hamburger_menu_icon.svg" alt="hamburger_icon">
+    </button>
+  </div>
+</mat-toolbar>
