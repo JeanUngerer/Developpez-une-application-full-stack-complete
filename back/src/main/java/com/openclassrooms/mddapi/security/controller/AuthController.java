@@ -5,6 +5,7 @@ import com.openclassrooms.mddapi.dtos.requests.RegisterRequest;
 import com.openclassrooms.mddapi.dtos.responses.AuthInfoResponse;
 import com.openclassrooms.mddapi.dtos.responses.AuthRefreshResponse;
 import com.openclassrooms.mddapi.dtos.responses.MessageResponse;
+import com.openclassrooms.mddapi.exceptions.BadRequestExceptionHandler;
 import com.openclassrooms.mddapi.exceptions.ForbidenExceptionHandler;
 import com.openclassrooms.mddapi.model.MddUser;
 import com.openclassrooms.mddapi.model.RefreshToken;
@@ -24,6 +25,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.regex.Pattern;
+
+import static com.openclassrooms.mddapi.helper.PasswordValidation.validatePassword;
+
+/**
+ * API controller for handling authentication requests.
+ */
 @RestController
 @Slf4j
 @SecurityScheme(
@@ -42,12 +50,26 @@ public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    /**
+     * Constructor for AuthController.
+     *
+     * @param tokenService the JWT token service
+     * @param refreshTokenService the refresh token service
+     * @param userService the user service
+     */
     public AuthController(TokenService tokenService, RefreshTokenService refreshTokenService, MddUserService userService) {
         this.tokenService = tokenService;
         this.refreshTokenService = refreshTokenService;
         this.userService = userService;
     }
 
+
+    /**
+     * Endpoint for generating a JWT token.
+     *
+     * @param authentication the Authentication object containing the user's credentials
+     * @return ResponseEntity with authorization information
+     */
     @Operation(summary = "Get JWT token", description = "Get JWT token")
     @SecurityRequirement(name = "basicAuth")
     @PostMapping("/token")
@@ -60,6 +82,12 @@ public class AuthController {
         return ResponseEntity.ok(new AuthInfoResponse(token, refreshToken));
     }
 
+    /**
+     * Endpoint for refreshing a JWT token.
+     *
+     * @param refreshTokenRequest the RefreshTokenRequest containing the old refresh token
+     * @return ResponseEntity with the new authorization information
+     */
     @PostMapping("/refreshtoken")
     public ResponseEntity<AuthRefreshResponse> refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         RefreshToken refreshToken = refreshTokenService.findByToken(refreshTokenRequest.getToken())
@@ -74,10 +102,20 @@ public class AuthController {
         return ResponseEntity.ok(new AuthRefreshResponse(token));
     }
 
+    /**
+     * Endpoint for registering a new user.
+     *
+     * @param registerRequest the RegisterRequest containing the user's registration information
+     * @return ResponseEntity with a message indicating the status of the registration
+     */
     @PostMapping("/register")
     public ResponseEntity<MessageResponse> register(@RequestBody RegisterRequest registerRequest) {
+        if (!validatePassword(registerRequest.getPassword())) {
+          throw new BadRequestExceptionHandler("The password is not valid");
+        }
         MddUser mddUser = new MddUser();
         mddUser.setEmail(registerRequest.getMail());
+
         mddUser.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         mddUser.setUsername(registerRequest.getUsername());
         MddUser user = userService.createUser(mddUser);

@@ -1,0 +1,61 @@
+{
+  "home-unauth": {
+    "signin": "Sign in",
+    "signup": "Sign up"
+  },
+  "signup": {
+    "register": "Signup",
+    "username": "Username",
+    "mail": "Email address",
+    "password": "Password",
+    "confirm-password": "Confirm password",
+    "sign-up": "Sign up"
+  },
+  "login": {
+    "signin": "Signin",
+    "mail": "Email address",
+    "password": "Password",
+    "error-login": "Error : wrong email address or password"
+  },
+  "articles": {
+    "create-article": "Create an article",
+    "sort-by": "Sort by",
+    "sorting": {
+      "date": "Date",
+      "title": "Title",
+      "theme": "Theme"
+    },
+    "no-subscription": "No theme subscription"
+  },
+  "header": {
+    "articles": "Articles",
+    "themes": "Themes"
+  },
+  "article": {
+    "comments": "Comments",
+    "write-comment-here": "Write your comment here",
+    "commentError": "144 characters maximum"
+  },
+  "new-article": {
+    "create-new-article": "Create a new article",
+    "select-theme": "Select a theme",
+    "article-title": "Article title",
+    "article-content": "Article content",
+    "create": "Create"
+  },
+  "user-profile": {
+    "user-profile": "User profile",
+    "save": "Save",
+    "subscriptions": "Subscriptions",
+    "unsubscribe": "Unsubscribe",
+    "logout": "Logout",
+    "username": "Username",
+    "mail": "Email address",
+    "password-matching": "Both password fields have to match",
+    "new-password": "New password",
+    "password-composition": "At least 8 characters- 1 didgit, letter, capital letter, special character"
+  },
+  "themes": {
+    "subscribe": "Subscribe"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "home-unauth": {
+    "signin": "se connecter",
+    "signup": "s'inscrire"
+  },
+  "signup": {
+    "register": "Inscription",
+    "username": "Nom d'utilisateur",
+    "mail": "Adresse e-mail",
+    "password": "Mot de passe",
+    "confirm-password": "Confirmer mot de passe",
+    "sign-up": "S'inscrire"
+  },
+  "login": {
+    "signin": "Se connecter",
+    "mail": "Adresse e-mail",
+    "password": "Mot de passe",
+    "error-login": "Erreur : email ou mot de passe incorrect"
+  },
+  "articles": {
+    "create-article": "Créer un article",
+    "sort-by": "Trier par",
+    "sorting": {
+      "date": "Date",
+      "title": "Titre",
+      "theme": "Thème"
+    },
+    "no-subscription": "Aucun abonnement à des thèmes"
+  },
+  "header": {
+    "articles": "Articles",
+    "themes": "Thèmes"
+  },
+  "article": {
+    "comments": "Commentaires",
+    "write-comment-here": "Écrivez ici votre commentaire",
+    "commentError": "144 caractères maximum"
+  },
+  "new-article": {
+    "create-new-article": "Créer un nouvel article",
+    "select-theme": "Sélectionner un thème",
+    "article-title": "Titre de l'article",
+    "article-content": "Contenu de l'article",
+    "create": "Créer"
+  },
+  "user-profile": {
+    "user-profile": "Profil utilisateur",
+    "save": "Sauvegarder",
+    "subscriptions": "Abonnements",
+    "unsubscribe": "Se désabonner",
+    "logout": "Se déconnecter",
+    "username": "Nom d'utilisateur",
+    "mail": "Adresse e-mail",
+    "password-matching": "Les deux champs de mot de passe doivent être identiques",
+    "new-password": "Nouveau mot de passe",
+    "password-composition": "Au moins 8 caractères - 1 chiffre, lettre minuscule, lettre majuscule, caractère spécial"
+  },
+  "themes": {
+    "subscribe": "S'abonner"
+  }
+}
